@@ -1,0 +1,7 @@
+$Apps = Get-AzADApplication | select ObjectId,DisplayName
+
+foreach ($App in $Apps) {
+    
+$Owner = Get-AzureADApplicationOwner -ObjectId $App.ObjectId | select UserPrincipalName ,DisplayName
+
+Write-Host "$($App.DisplayName);$($Owner.DisplayName);$($Owner.UserPrincipalName)"}
